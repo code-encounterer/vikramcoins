@@ -45,8 +45,9 @@ contract vikramcoins {
     {
         require(
             vikramcoins_sold <= equity_vikramcoins[investor],
-            "investor doesn't posses this much coins"
+            "Investor doesn't posses this much coins"
         );
+        require(msg.sender == investor, "You can not sell someone elses coins");
         equity_vikramcoins[investor] -= vikramcoins_sold;
         equity_inr[investor] =
             equity_vikramcoins[investor] /
